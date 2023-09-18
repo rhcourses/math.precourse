@@ -1,0 +1,9 @@
+= Material for a Math-Precourse for university students.
+
+This repo contains material for a math precourse that I regularly teach
+at the University of Applied Sciences in Mannheim, Germany.
+
+The material is intended to be used as a supplement to an existing script
+with exercises.
+
+The courses are taught in german, so the material is in german as well.
