@@ -26,3 +26,7 @@ $clean_ext = 'snm nav synctex.gz';
 addsrcfiles("slides",
     "slides_complete.tex",
 );
+
+addsrcfiles("circle_area",
+    "circle_area.tex",
+);

@@ -1,0 +1,39 @@
+\usepackage{graphicx}
+\usepackage[abspath]{currfile}
+
+% Sets the default search path for \imageframe.
+% Can be overridden by passing a different path to \imageframe.
+\NewDocumentCommand{\importimagesfrom}{ m }{
+    \def\imageimportpath{#1}
+}
+\importimagesfrom{.}
+
+% Sets the default search path for \imageframe to a subdirectory of the current directory.
+% Can be overridden by passing a different path to \imageframe.
+\NewDocumentCommand{\importimagesfromsubdir}{ m }{
+    \def\foo{\currfileabsdir#1}
+    \importimagesfrom{\currfileabsdir#1}
+}
+
+% Takes a list of file names and creates a frame for each image with that file name.
+% The images are scaled to fit the frames.
+%
+% #1: A comma separated list of file names.
+\NewDocumentCommand{\imageframes}{ >{ \SplitList { , } } m }{%
+    \ProcessList{#1}{\imageframe}
+    % TODO: Make the import path configurable.
+    %       Add an optional argument and pass it to \imageframe.
+    %       Maybe call \imageframe from an environment that sets the import path.
+}
+
+% Takes a single file name and creates a frame that
+% contains the image with that file name.
+% The image is scaled to fit the frame.
+%
+% #1: The path to the directory containing the image.
+% #2: The file name.
+\NewDocumentCommand{\imageframe}{ O{\imageimportpath} m }{%
+    \begin{frame}
+        \includegraphics[width=\textwidth,height=\textheight,keepaspectratio]{{#1/#2}}
+    \end{frame}
+}
