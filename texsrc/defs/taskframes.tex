@@ -1,0 +1,14 @@
+% An environment for a task.
+% Defines a task title that will be used by all frames inside this environment,
+% except if another title is given to the frame as an argument.
+% Starts a section with the task title.
+% If a star is given, the title will be used as is.
+\NewDocumentEnvironment{taskframes}{ m }{\begin{*taskframes}{Aufgabe #1}}{\end{*taskframes}}
+
+\NewDocumentEnvironment{*taskframes}{ m }{
+    \def\inserttasktitle{#1}
+    \section{\inserttasktitle}
+
+    \NewDocumentEnvironment{taskframe}{ O{\inserttasktitle} }{\begin{frame}[t,fragile,environment=taskframe]\frametitle{##1}}{\end{frame}}
+    % TODO: Add parameters so that every frame option can be forwarded to the frame environment.
+}{}

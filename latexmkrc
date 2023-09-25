@@ -30,3 +30,7 @@ addsrcfiles("slides",
 addsrcfiles("circle_area",
     "circle_area.tex",
 );
+
+addsrcfiles("curve_sketches",
+    "curve_sketches.tex",
+);

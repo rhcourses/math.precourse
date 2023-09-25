@@ -1,0 +1,34 @@
+\usepackage{tcolorbox}
+\tcbuselibrary{raster}
+\tcbuselibrary{skins}
+
+% Common box style.
+\tcbset{
+    commonbox/.style={
+        enhanced,
+        colback=yellow!10,
+        colframe=blue!75!black,
+        coltitle=blue!75!black,
+        fonttitle=\bfseries,
+        attach boxed title to top left = {xshift=0.5cm, yshift=-\tcboxedtitleheight/2},
+        boxed title style={rounded corners, colback=yellow!10},
+    }
+}
+
+% A box for showing function definitions.
+%
+% #1: Box title.
+\NewTColorBox{mathbox}{ m }{%
+    commonbox,
+    title={#1},
+    before upper={\vspace*{-.6em}},
+}
+
+% A box for showing text.
+%
+% #1: Box title.
+\NewTColorBox{textbox}{ m }{%
+    commonbox,
+    title={#1},
+    before upper={\vspace*{1em}},
+}
