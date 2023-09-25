@@ -1,0 +1,23 @@
+%% Prints a very simple title frame.
+% #1: Title
+% #2: Subtitle
+% #3: Author
+% #4: Date
+\NewDocumentCommand{\titleframe}{ m o m O{\today} }{
+  \begin{frame}
+    \begin{block}
+      {\centering\Huge#1 }
+    \end{block}
+    \IfValueT{#2}{
+      \begin{block}
+        {\centering\Large#2 }
+      \end{block}
+    }
+    \begin{block}
+      {\centering#3}
+    \end{block}
+    \begin{block}
+      {\centering#4}
+    \end{block}
+  \end{frame}
+}

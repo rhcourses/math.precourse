@@ -1,0 +1,27 @@
+\usepackage{etoolbox}
+
+% Define the title for a table of contents frame.
+\NewDocumentCommand{\tocframetitle}{ m }{
+    \def\thetocframetitle{#1}
+}
+\tocframetitle{Übersicht}
+
+% Define a frame that shows a table of contents.
+% #1: optional string added to the title.
+% #2: optional argument passed to \tableofcontents.
+\NewDocumentCommand{\tocframe}{ O{} O{} }{
+    \begin{frame}
+        \frametitle{\ifstrempty{#1}{}{#1 -- }\thetocframetitle}
+        \tableofcontents[#2]
+    \end{frame}
+}
+
+% Define a frame that shows a table of contents for a section.
+\NewDocumentCommand{\globaltocframe}{}{
+    \tocframe[][hidesubsections]
+}
+
+% Define a frame that shows a table of contents for a section.
+\NewDocumentCommand{\sectiontocframe}{}{
+    \tocframe[\insertsection][currentsection, subsectionstyle=show/show/hide]
+}

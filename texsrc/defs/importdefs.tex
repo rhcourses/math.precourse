@@ -1,0 +1,24 @@
+% Document import definitions.
+
+\usepackage[abspath]{currfile}
+
+% Sets the default search path for \importdir.
+% Can be overridden by passing a different path to \importdir.
+\NewDocumentCommand{\importdirsfrom}{ m }{
+    \def\importdirpath{#1}
+}
+\importdirsfrom{.}
+
+% Sets the default search path for \importdir to a subdirectory of the current directory.
+% Can be overridden by passing a different path to \importdir.
+\NewDocumentCommand{\importdirsfromsubdir}{ m }{
+    \importdirsfrom{\currfileabsdir/#1}
+}
+
+% Imports a document from a directory.
+% #1: Optional: A directory to search for subdocument directories.
+% #2: The subdirectory to import the document from.
+% #3: Optional: The main document (same as subdirectory name by default).
+\NewDocumentCommand{\importdir}{ O{\importdirpath} m O{#2} }{
+    \import{#1/#2}{#3}
+}
